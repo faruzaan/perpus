@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BerandaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="10">
+
+                    <ImageView
+                        android:id="@+id/imgLogout"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:gravity="center"
+                        android:text="MENU"
+                        android:textColor="#fff" />
+
+                    <ImageView
+                        android:id="@+id/imgProfil"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_launcher" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/pager"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp">
+
+                        <me.relex.circleindicator.CircleIndicator
+                            android:id="@+id/indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Buku"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtBuku"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="right"
+                        android:text="Lihat Lainnya"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recBuku"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Pinjaman"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtPinjaman"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="right"
+                        android:text="Lihat Lainnya"
+                        android:textSize="16sp" />
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recPeminjaman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:clipToPadding="false" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

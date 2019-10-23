@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register Akun"
+        android:layout_marginBottom="80dp"
+        android:textSize="20dp"
+        android:gravity="center"/>
+    <EditText
+        android:id="@+id/edtNoid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID Siswa"/>
+    <EditText
+        android:id="@+id/edtNama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama Siswa"/>
+    <EditText
+        android:id="@+id/edtKelas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kelas Siswa"/>
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password"/>
+    <EditText
+        android:id="@+id/edtTelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="No Telp Siswa"/>
+    <EditText
+        android:inputType=""
+        android:id="@+id/edtAlamat"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="Alamat Siswa"/>
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"/>
+</LinearLayout>

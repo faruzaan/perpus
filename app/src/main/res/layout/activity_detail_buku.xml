@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailBukuActivity"
+    android:layout_margin="15dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imgCover"
+            android:layout_width="100dp"
+            android:layout_height="160dp"
+            android:src="@drawable/ic_launcher_background"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtJudul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Judul"
+                android:textSize="18dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtJenis"
+                android:text="jenis"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtPenulis"
+                android:text="Penulis"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtPenerbit"
+                android:text="Penerbit"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTahunPenerbit"
+                android:text="Tahun Penerbit"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txtDesk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="desk"/>
+
+</LinearLayout>
