@@ -39,6 +39,7 @@ public class MenuActivity extends AppCompatActivity {
         String kelas = user.get(SessionManager.key_kelas);
         String gambar = user.get(SessionManager.key_foto);
 
+
         //mengatur text di textview dengan nilai di variable
 
         txtNama.setText(nama);
@@ -49,14 +50,21 @@ public class MenuActivity extends AppCompatActivity {
         btnBuku.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this,BukuActivity.class));
+
+                Intent i;
+                i = new Intent(MenuActivity.this,BukuActivity.class);
+
+                startActivity(i);
             }
         });
         btnPeminjaman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                HashMap<String, String> user = sessionManager.getUserDetails();
+                String noid = user.get(SessionManager.key_noid);
                 Intent i;
                 i = new Intent(MenuActivity.this,PeminjamanActivity.class);
+                i.putExtra("noid",noid);
                 startActivity(i);
             }
         });

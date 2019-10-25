@@ -4,8 +4,21 @@ public class DataPeminjaman {
     private String pinjaman_id,siswa_id,siswa_nama,buku_judul,cover,detail_pinjaman_jumlah,
     admin_id,admin_nama,pinjaman_tanggal,pinjaman_kembali,keterangan;
 
-    public DataPeminjaman()
-    {}
+    public DataPeminjaman(){}
+    public DataPeminjaman(String pinjaman_id, String siswa_id, String siswa_nama, String buku_judul, String cover, String detail_pinjaman_jumlah, String admin_id, String admin_nama, String pinjaman_tanggal, String pinjaman_kembali, String keterangan) {
+        this.pinjaman_id = pinjaman_id;
+        this.siswa_id = siswa_id;
+        this.siswa_nama = siswa_nama;
+        this.buku_judul = buku_judul;
+        this.cover = cover;
+        this.detail_pinjaman_jumlah = detail_pinjaman_jumlah;
+        this.admin_id = admin_id;
+        this.admin_nama = admin_nama;
+        this.pinjaman_tanggal = pinjaman_tanggal;
+        this.pinjaman_kembali = pinjaman_kembali;
+        this.keterangan = keterangan;
+    }
+
     public String getPinjaman_id() {
         return pinjaman_id;
     }
@@ -91,20 +104,6 @@ public class DataPeminjaman {
     }
 
     public void setKeterangan(String keterangan) {
-        this.keterangan = keterangan;
-    }
-
-    public DataPeminjaman(String pinjaman_id, String siswa_id, String siswa_nama, String buku_judul, String cover, String detail_pinjaman_jumlah, String admin_id, String admin_nama, String pinjaman_tanggal, String pinjaman_kembali, String keterangan) {
-        this.pinjaman_id = pinjaman_id;
-        this.siswa_id = siswa_id;
-        this.siswa_nama = siswa_nama;
-        this.buku_judul = buku_judul;
-        this.cover = cover;
-        this.detail_pinjaman_jumlah = detail_pinjaman_jumlah;
-        this.admin_id = admin_id;
-        this.admin_nama = admin_nama;
-        this.pinjaman_tanggal = pinjaman_tanggal;
-        this.pinjaman_kembali = pinjaman_kembali;
         this.keterangan = keterangan;
     }
 }

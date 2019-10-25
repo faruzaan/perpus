@@ -41,6 +41,8 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class BerandaActivity extends AppCompatActivity {
 
+    SessionManager sessionManager;
+
     TextView txtBuku;
     ViewPager mPager;
     CircleIndicator indicator;
@@ -58,9 +60,9 @@ public class BerandaActivity extends AppCompatActivity {
     AdapterRecyclerBuku adapterBuku;
 
     //SessionManager sessionManager;
-    ListView listDataPeminjaman;
-    List<DataPeminjaman> itemList = new ArrayList<DataPeminjaman>();
-    AdapterPeminjaman adapterPeminjaman;
+//    ListView listDataPeminjaman;
+//    List<DataPeminjaman> itemList = new ArrayList<DataPeminjaman>();
+//    AdapterPeminjaman adapterPeminjaman;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,7 @@ public class BerandaActivity extends AppCompatActivity {
         //slide start
         currentPage = 0;
         SlideArray.clear();
-        final Integer[] SlideIndex = {R.drawable.ic_launcher_background,R.drawable.buku,R.drawable.ic_perm_identity_black_24dp};
+        final Integer[] SlideIndex = {R.drawable.perpus1,R.drawable.perpus2,R.drawable.perpus3};
 //        final Interger[] SlideIndex = (R.mipmap.ic_launcher,R.);
         for (int i=0;i<3;i++){
             SlideArray.add(SlideIndex[i]);
@@ -127,16 +129,16 @@ public class BerandaActivity extends AppCompatActivity {
         recBuku.setItemAnimator(new DefaultItemAnimator());
         recBuku.setAdapter(adapterBuku);
 
+
 //        HashMap<String, String> user = sessionManager.getUserDetails();
 //        String pnoid = user.get(SessionManager.key_noid);
         //loadBuku();
 
-        listDataPeminjaman = (ListView) findViewById(R.id.listDataPeminjaman);
-        adapterPeminjaman = new AdapterPeminjaman(this,itemList);
-        listDataPeminjaman.setAdapter(adapterPeminjaman);
+//        listDataPeminjaman = (ListView) findViewById(R.id.listDataPeminjaman);
+//        adapterPeminjaman = new AdapterPeminjaman(this,itemList);
+//        listDataPeminjaman.setAdapter(adapterPeminjaman);
 
         loadBuku();
-        loadPeminjaman("S001");
 
 
     }
@@ -190,70 +192,6 @@ public class BerandaActivity extends AppCompatActivity {
                 // Posting parameters ke post url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("parameter1", "isinilai");
-                params.put("parameter2", "isinilai");
-                return params;
-            }
-
-            @Override
-            public Map getHeaders() throws AuthFailureError {
-                HashMap headers = new HashMap();
-                //headers.put("API-KEY", "kjashdkjaskjhduihoas978978as9udhujahksdh98");
-                //headers.put("Content-Type", "application/x-www-form-urlencoded");
-                return headers;
-            }
-        };
-        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
-    }
-    private void loadPeminjaman(final String noid){
-        itemBuku.clear();
-        adapterBuku.notifyDataSetChanged();
-        final StringRequest strReq = new StringRequest(Request.Method.POST, "https://faruzaan.000webhostapp.com/Perpus/getPeminjamanB.php", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Response: " + response.toString());
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    String error = jObj.getString("error");
-//                    JSONObject result = jObj.getJSONObject("result");
-                    if (error.matches("false")) {
-                        JSONArray jArr = jObj.getJSONArray("data");
-                        for (int i = 0; i < jArr.length(); i++) {
-                            try {
-                                JSONObject dataObj = jArr.getJSONObject(i);
-                                DataBuku item = new DataBuku();
-                                item.setBuku_id(dataObj.getString("buku_id"));
-                                item.setBuku_judul(dataObj.getString("buku_judul"));
-                                item.setBuku_kategori(dataObj.getString("buku_kategori"));
-                                item.setBuku_jenis(dataObj.getString("buku_jenis"));
-                                item.setBuku_penulis(dataObj.getString("buku_penulis"));
-                                item.setBuku_penerbit(dataObj.getString("buku_penerbit"));
-                                item.setBuku_tahunterbit(dataObj.getString("buku_tahunterbit"));
-                                item.setBuku_cover(dataObj.getString("buku_cover"));
-                                item.setBuku_penerbit(dataObj.getString("buku_penerbit"));
-                                item.setBuku_desk(dataObj.getString("buku_desk"));
-                                itemBuku.add(item);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    adapterBuku.notifyDataSetChanged();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Error: " + error.getMessage());
-                Toast.makeText(BerandaActivity.this, "Tidak dapat mengambil data", Toast.LENGTH_LONG).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting parameters ke post url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("noid", noid);
                 params.put("parameter2", "isinilai");
                 return params;
             }
