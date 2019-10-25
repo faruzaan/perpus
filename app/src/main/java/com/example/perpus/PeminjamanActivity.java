@@ -42,6 +42,8 @@ public class PeminjamanActivity extends AppCompatActivity implements SwipeRefres
     List<DataPeminjaman> itemList = new ArrayList<DataPeminjaman>();
     AdapterPeminjaman adapterPeminjaman;
 
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,9 @@ public class PeminjamanActivity extends AppCompatActivity implements SwipeRefres
         adapterPeminjaman = new AdapterPeminjaman(this,itemList);
         listDataPeminjaman.setAdapter(adapterPeminjaman);
 
+//        HashMap<String, String> user = sessionManager.getUserDetails();
+//        final String pnoid = user.get(SessionManager.key_noid);
+
         swipe.setOnRefreshListener(this);
         swipe.post(new Runnable() {
             @Override
@@ -59,7 +64,7 @@ public class PeminjamanActivity extends AppCompatActivity implements SwipeRefres
                 swipe.setRefreshing(true);
                 itemList.clear();
                 adapterPeminjaman.notifyDataSetChanged();
-                //loadData();
+                loadData("S001");
             }
         });
     }
@@ -68,7 +73,7 @@ public class PeminjamanActivity extends AppCompatActivity implements SwipeRefres
     public void onRefresh() {
 
     }
-    private void loadData() {
+    private void loadData(final String noid) {
         swipe.setRefreshing(true);
         itemList.clear();
         adapterPeminjaman.notifyDataSetChanged();
@@ -118,7 +123,7 @@ public class PeminjamanActivity extends AppCompatActivity implements SwipeRefres
             protected Map<String, String> getParams() {
                 // Posting parameters ke post url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("noid", "isinilai");
+                params.put("noid", noid);
                 params.put("parameter2", "isinilai");
                 return params;
             }

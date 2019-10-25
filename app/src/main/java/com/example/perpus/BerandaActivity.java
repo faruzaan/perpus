@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,9 +20,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.perpus.adapter.AdapterPeminjaman;
 import com.example.perpus.adapter.AdapterRecyclerBuku;
 import com.example.perpus.adapter.AdapterSlide;
 import com.example.perpus.data.DataBuku;
+import com.example.perpus.data.DataPeminjaman;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,6 +56,12 @@ public class BerandaActivity extends AppCompatActivity {
     RecyclerView recBuku;
     List<DataBuku> itemBuku = new ArrayList<DataBuku>();
     AdapterRecyclerBuku adapterBuku;
+
+    //SessionManager sessionManager;
+    ListView listDataPeminjaman;
+    List<DataPeminjaman> itemList = new ArrayList<DataPeminjaman>();
+    AdapterPeminjaman adapterPeminjaman;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,9 +127,16 @@ public class BerandaActivity extends AppCompatActivity {
         recBuku.setItemAnimator(new DefaultItemAnimator());
         recBuku.setAdapter(adapterBuku);
 
+//        HashMap<String, String> user = sessionManager.getUserDetails();
+//        String pnoid = user.get(SessionManager.key_noid);
         //loadBuku();
+
+        listDataPeminjaman = (ListView) findViewById(R.id.listDataPeminjaman);
+        adapterPeminjaman = new AdapterPeminjaman(this,itemList);
+        listDataPeminjaman.setAdapter(adapterPeminjaman);
+
         loadBuku();
-        loadPeminjaman();
+        loadPeminjaman("S001");
 
 
     }
@@ -188,7 +204,7 @@ public class BerandaActivity extends AppCompatActivity {
         };
         AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
     }
-    private void loadPeminjaman(){
+    private void loadPeminjaman(final String noid){
         itemBuku.clear();
         adapterBuku.notifyDataSetChanged();
         final StringRequest strReq = new StringRequest(Request.Method.POST, "https://faruzaan.000webhostapp.com/Perpus/getPeminjamanB.php", new Response.Listener<String>() {
@@ -237,7 +253,7 @@ public class BerandaActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters ke post url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("parameter1", "isinilai");
+                params.put("noid", noid);
                 params.put("parameter2", "isinilai");
                 return params;
             }

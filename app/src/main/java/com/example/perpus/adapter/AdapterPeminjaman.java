@@ -56,14 +56,14 @@ public class AdapterPeminjaman extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_peminjaman, null);
 
         TextView txtNamaBuku = (TextView) convertView.findViewById(R.id.txtNamaBuku);
-        TextView txtJumlahBuku = (TextView) convertView.findViewById(R.id.txtJumlahBuku);
-        TextView txtTglPeminjaman = (TextView) convertView.findViewById(R.id.txtTglPeminjaman);
+        TextView txtJumlahBuku = (TextView) convertView.findViewById(R.id.txtJmlBuku);
+        TextView txtTglPeminjaman = (TextView) convertView.findViewById(R.id.txtTgl);
 
         DataPeminjaman data = items.get(position);
 
         txtNamaBuku.setText(data.getBuku_judul());
-        txtJumlahBuku.setText(data.getDetail_pinjaman_jumlah().toString());
-        txtTglPeminjaman.setText(data.getPinjaman_tanggal());
+        txtJumlahBuku.setText("Jumlah Buku "+data.getDetail_pinjaman_jumlah());
+        txtTglPeminjaman.setText(data.getPinjaman_tanggal()+" s/d "+data.getPinjaman_kembali());
 
         Glide.with(convertView.getContext()).load(data.getCover())
                 .thumbnail(0.5f)
@@ -71,7 +71,7 @@ public class AdapterPeminjaman extends BaseAdapter {
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into((ImageView) convertView.findViewById(R.id.imgCoverPeminjaman));
+                .into((ImageView) convertView.findViewById(R.id.imgCover));
 
         return convertView;
     }

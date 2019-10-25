@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i;
                 if (sessionManager.is_login())
                 {
-                    i = new Intent(MainActivity.this,MenuActivity.class);
+                    i = new Intent(MainActivity.this,BerandaActivity.class);
                 }
                 else {
                     i = new Intent(MainActivity.this, LoginActivity.class);
